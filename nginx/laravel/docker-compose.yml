@@ -22,13 +22,16 @@ services:
     environment:
       - DB_PORT=3306
       - DB_HOST=mysql
+      - DB_DATABASE=laravel
+      - DB_USERNAME=root
+      - DB_PASSWORD=secret
     links: 
       - mysql
   mysql:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=testing
+      - MYSQL_DATABASE=laravel
     ports:
       - 3306
   phpmyadmin:
@@ -36,6 +39,7 @@ services:
     environment:
       - "MYSQL_USERNAME=root"
       - "MYSQL_ROOT_PASSWORD=secret"
+      - PMA_HOST=mysql
     links:
       - mysql
     ports:

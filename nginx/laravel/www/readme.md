@@ -1,1 +1,1 @@
-Masukkan keseluruhan Folder Projek Laravel disini
+Masukkan projek Laravel di folder ini
