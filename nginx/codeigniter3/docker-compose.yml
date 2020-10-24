@@ -19,3 +19,19 @@ services:
       dockerfile: ./docker/app.docker
     volumes:
       - ./www:/var/www
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=testing
+    ports:
+      - 3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - "MYSQL_USERNAME=root"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    links:
+      - mysql
+    ports:
+      - "9003:80"
