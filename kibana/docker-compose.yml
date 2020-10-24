@@ -1,0 +1,13 @@
+version: '2'
+services:
+  kibana:
+    container_name: kibana_app
+    image: docker.elastic.co/kibana/kibana:7.9.2
+    environment:
+      ELASTICSEARCH_HOSTS: elasticsearch_app
+    networks:
+      - kibana_elasticsearch  
+
+networks:
+  kibana_elasticsearch:
+    driver: bridge

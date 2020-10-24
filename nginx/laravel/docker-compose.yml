@@ -1,0 +1,21 @@
+version: "2"
+services: 
+  nginx:
+    container_name: nginx_laravel
+    image: nginx:alpine
+    build:
+      context: ./
+      dockerfile: ./docker/web.docker
+    volumes:
+      - ./www:/var/www
+    ports: 
+      - 9001:80
+    links:
+      - php
+  php:
+    container_name: php_laravel
+    build:
+      context: ./
+      dockerfile: ./docker/app.docker
+    volumes:
+      - ./www:/var/www

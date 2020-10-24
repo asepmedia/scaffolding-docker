@@ -1,0 +1,19 @@
+version: "2"
+services: 
+  nginx:
+    image: nginx:alpine
+    build:
+      context: ./
+      dockerfile: ./docker/web.docker
+    volumes:
+      - ./www:/var/www
+    ports: 
+      - 9000:80
+    links:
+      - php
+  php:
+    build:
+      context: ./
+      dockerfile: ./docker/app.docker
+    volumes:
+      - ./www:/var/www

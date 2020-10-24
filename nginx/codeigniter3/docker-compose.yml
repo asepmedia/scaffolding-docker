@@ -1,0 +1,21 @@
+version: "2"
+services: 
+  nginx:
+    container_name: nginx_ci3
+    image: nginx:alpine
+    build:
+      context: ./
+      dockerfile: ./docker/web.docker
+    volumes:
+      - ./www:/var/www
+    ports: 
+      - 9002:80
+    links:
+      - php
+  php:
+    container_name: php_ci3
+    build:
+      context: ./
+      dockerfile: ./docker/app.docker
+    volumes:
+      - ./www:/var/www
